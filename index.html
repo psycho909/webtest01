@@ -1,135 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>skrollr - parallax scrolling for the masses</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parallax Scroll OnePage WebDesign</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style>
-html, body {
-	width:100%;
-	height:100%;
-	padding:0;
-	margin:0;
-	overflow-x:hidden;
+.head-col{
+	width: 100%;
+	height: 50vh;
+	background-color: #58C9B9;
 }
-.test{
-	width: 100px;
-	height: 100px;
-	margin-top: 400px;
+.pageone-col{
+	width: 100%;
+	height: 50vh;
+	background-color: #8CD790;
 }
-.drop{
-	width: 100px;
-	height: 100px;
+.pagetwo-col{
+	width: 100%;
+	height: 50vh;
+	background-color: #F68657;
 }
-.test1{
-	width: 200px;
-	height: 200px;
-	background-color: green;
+.pagethree-col{
+	width: 100%;
+	height: 50vh;
+	background-color: #8EC0E4;
 }
-.test-box{
-	width: 200px;
-	height: 200px;
-	box-sizing:border-box;
-	border: 1px solid black;
-	position: fixed;
-	border-radius: 50%;
-	top: 50%;
-	left: 50%;
-	transform:translate(-50%,-50%);
-	padding: 5px;
-}
-.test-content{
-	width: 20px;
-	height: 20px;
-	background-color: #000;
-	position: absolute;
-	border-radius: 50%;
-}
-.text-box-one{
-	width: 250px;
-	height: 250px;
-	box-sizing:border-box;
-	border: 1px solid black;
-	position: absolute;
-	top: 50%;
-	transition: all .5s;
-	opacity: 0;
-}
-.text-box-one[show--video-btn="0"]{
-  opacity: 0;
-  transform: translate(0, 5vh);
-}
-
-.text-box-one[show--video-btn="1"]{
-  opacity: 1;
-  transform: translate(0, 0);
-}
-
-.text-box-one[show--video-btn="2"]{
-  opacity: 0;
-}
-#menu{
-	width: 200px;
-	height: 200px;
-	box-sizing:border-box;
-	border: 1px solid red;
-	top: 50%;
-	left: 20%;
-	position: absolute;
-	transition: all .5s;
-}
-.fixed.active{
-	transition: all .5s;
-	transform: translateX(0);
-	animation:ani .5s ease forwards;
-}
-@-webkit-keyframes ani{
-	0%{
-		transform: translateX(20px);
-	}
-	50%{
-		transform:translateX(-20px);
-	}
-	100%{
-		transform:translateX(0px);
-	}
+.footer-col{
+	width: 100%;
+	height: 50vh;
+	background-color: #E71D36;
 }
 </style>
 </head>
 <body>
-<a href="test.html">test</a>
-<div class="test-box">
-	<div class="test-content" data-0="left[cos]:0%;top[sin]:0%;" data-500="left:90%;top:90%;">
-		
+<header class="head">
+	<div class="container">
+		<div class="row head-row">
+			<div class="col-md-12 head-col">
+				head
+			</div>
+		</div>
 	</div>
-</div>
-<div class="text-box-one" data-0="@show--video-btn: 0;" data-center-top="@show--video-btn: 1;">
-	
-</div>
-<div id="menu" class="" role="navigation" data-0="@class:fixed;" data-center-top="@class:fixed active">
-
-</div>
-
-<script type="text/javascript" src="js/skrollr.min.js"></script>
+</header>
+<section class="pageone">
+	<div class="container">
+		<div class="row pageone-row">
+			<div class="col-md-12 pageone-col">
+				<h3 style="text-align: center"
+				data-center-top="background-color:rgb(0,0,0);width:0%;"
+				data-center-center="background-color:rgb(255,0,0);width:100%;"
+				>pageone</h3>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="pagetwo">
+	<div class="container">
+		<div class="row pagetwo-row">
+			<div class="col-md-12 pagetwo-col">
+				<h3 style="text-align: center"
+				data-center-top="background-color:rgb(0,0,0);width:0%;"
+				data-center-center="background-color:rgb(255,0,0);width:100%;"
+				>pageone</h3>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="pagethree">
+	<div class="container">
+		<div class="row pagethree-row">
+			<div class="col-md-12 pagethree-col">
+				<h3 style="text-align: center"
+				data-center-top="background-color:rgb(0,0,0);width:0%;"
+				data-center-center="background-color:rgb(255,0,0);width:100%;"
+				>pageone</h3>
+			</div>
+		</div>
+	</div>
+</section>
+<footer class="footer">
+	<div class="container">
+		<div class="row footer-row">
+			<div class="col-md-12 footer-col">
+				footer
+			</div>
+		</div>
+	</div>
+</section>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js"></script>
 <script type="text/javascript">
-	// var s = skrollr.init();
-	skrollr.init({
-		forceHeight: true,
-		easing: {
-			sin: function(p) {
-				return (Math.sin(p * Math.PI * 2 - Math.PI/2) + 1) / 2;
-			},
-			cos: function(p) {
-				return (Math.cos(p * Math.PI * 2 - Math.PI/2) + 1) / 2;
-			},
-		},
-		render: function(data) {
-			//Loop
-			// if(data.curTop === data.maxTop) {
-			// 	this.setScrollTop(0, true);
-			// }
-		}
-	});
+var s = skrollr.init();
 </script>
 </body>
 </html>
