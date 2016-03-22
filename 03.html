@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parallax Scroll OnePage WebDesign</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
+<style>
+.head-col{
+	width: 100%;
+	height: 50vh;
+	background-color: #58C9B9;
+}
+.pageone-col{
+	width: 100%;
+	height: 50vh;
+	background-color: #8CD790;
+}
+.pagetwo-col{
+	width: 100%;
+	height: 50vh;
+	background-color: #F68657;
+}
+.pagethree-col{
+	width: 100%;
+	height: 50vh;
+	background-color: #8EC0E4;
+}
+.footer-col{
+	width: 100%;
+	height: 50vh;
+	background-color: #E71D36;
+}
+#animate1 {
+	transition: transform 0.3s ease-out;
+}
+.zap {
+	transform: translateX(0px) !important;
+}
+.red{
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	transform: translateX(-200px);
+}
+.animated{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%,0);
+}
+.boxbox{
+	position: fixed;
+	overflow: visible;
+	white-space: nowrap;
+	pointer-events: none;
+	font-size: 1em;
+	z-index: 9999;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.box-con{
+	position: absolute;
+	overflow: visible;
+	border-width: 1px 0px 0px;
+	border-style: solid;
+	color: blue;
+	border-color: blue;
+	right: 0px;
+}
+.box-text{
+	cursor: pointer;
+	position: relative;
+	padding: 0px 8px 3px;
+	transform: translateY(-100%);
+}
+.green{
+	width: 100px;
+	height: 100px;
+	background-color: green;
+}
+</style>
+</head>
+<body>
+<div class="boxbox">
+	<div class="box-con">
+		<div class="box-text">trigger 1</div>
+	</div>
+</div>
+<header class="head">
+	<div class="container">
+		<div class="row head-row">
+			<div class="col-md-12 head-col">
+				head
+			</div>
+		</div>
+	</div>
+</header>
+<section class="pageone">
+	<div class="container">
+		<div class="row pageone-row">
+			<div class="col-md-12 pageone-col">
+				<div style="text-align: center">pageone</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="trigger1" class="pagetwo">
+	<div class="container">
+		<div class="row pagetwo-row">
+			<div class="col-md-12 pagetwo-col">
+				<div style="text-align: center">pagetwo</div>
+				<div id="animate1" class="box1 red">
+					<p>Zap.</p>
+					<a href="#" class="viewsource">view source</a>
+				</div>
+				<div id="animate2" class="green">
+					<p>green</p>
+					<a href="#" class="viewsource">view source</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="trigger2" class="pagethree">
+	<div class="container">
+		<div class="row pagethree-row">
+			<div class="col-md-12 pagethree-col">
+				<div style="text-align: center">pageone</div>
+				<div class="animated box1 red">
+					<p>Wait for green.</p>
+					<a href="#" class="viewsource">view source</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<footer class="footer">
+	<div class="container">
+		<div class="row footer-row">
+			<div class="col-md-12 footer-col">
+				footer
+			</div>
+		</div>
+	</div>
+</section>
+
+<script type="text/javascript">
+var controller = new ScrollMagic.Controller();
+var scene = new ScrollMagic.Scene({triggerElement: "#trigger1"})
+// trigger animation by adding a css class
+.setClassToggle("#animate1", "zap")
+.addTo(controller);
+
+// var controller1 = new ScrollMagic.Controller({container: "#container1"});
+// build scene
+var scene = new ScrollMagic.Scene({triggerElement: "#trigger2", duration: 100})
+.addTo(controller)
+.setTween(TweenMax.to(".animated", 1, {backgroundColor: "green",color:'red'}))
+.setPin(".animated");
+
+var scene = new ScrollMagic.Scene({
+	triggerElement: "#trigger1",duration:100
+})
+// .setTween("#animate2", 2, {backgroundColor: "yellow", scale: 1.5}) // trigger a TweenMax.to tween
+.setTween(TweenMax.to("#animate2", 2, {backgroundColor: "yellow",color:'red',x:100}))
+.addTo(controller);
+</script>
+</body>
+</html>
